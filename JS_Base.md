@@ -117,7 +117,18 @@ arr.join('-'); // 'A-B-C-1-2-3'
 </code></pre>
 如果Array的元素不是字符串，将自动转换为字符串后再连接。
 
-对象：JS的对象是一组由键值组成的无序集合(Java对象是某一类抽象事物的一个具体实例）；
+
+对象：     
+* JS的对象是一组由键值组成的无序集合(Java对象是某一类抽象事物的一个具体实例）；    
+* JS用{...}表示一个对象，键值对以xxx：xxx的形式声明，键值对之间用“，”隔开，最后一个键值对没有“，”    
+* JS对象的键都是字符串类型（爱称对象的属性，遵循变量命名规则，否则用''括起来），值是任意类型    
+* 通过‘preson.name’ 获取对象的属性值；特殊属性通过person['name-name']访问;    
+* 访问不存在的属性，返回  undefined    
+* JS的对象是动态类型，可以自由增删对象的属性    
+* 通过 in 操作符检测对象是否拥有某一属性：  'name' in object;// private 和 继承得到
+* 判断对象自身拥有的属性： object.hasOwnProperty('name');
+
+
 <pre><code>
 var person = {
     name:'Bob',
@@ -128,7 +139,6 @@ var person = {
     zipcode:null
 };
 </code></pre>
-    JS对象的键都是字符串类型（爱称对象的属性），值是任意类型；通过‘preson.name’ 获取对象的属性值
  
 变量：var 声明一个变量，使用‘=’对变量赋值，类型可变（java 一旦声明变量类型，只能接受该类型的值）
 
@@ -136,7 +146,73 @@ strict模式：
 * 启用strict模式在JS代码的第一行写上'use strict';
 * JS使用未用var 声明的变量，该变量被标记为全局变量，同一个页面的不同js文件中的同名变量未使用var声明，造成混淆    
 * 启用strict模式，未使用var声明的变量在使用时，将导致运行错误      
-* 不支持strict模式的浏览器当作字符串语句执行，支持strict模式的浏览器开启strict模式
+* 不支持strict模式的浏览器当作字符串语句执行，支持strict模式的浏览器开启strict模式    
+
+Map和Set    
+* Map是一组键值对结构，ES6标准，通过键查找速度快，不论Map多大
+<pre><code>
+    var names = ['Michael', 'Bob', 'Tracy'];
+    var scores = [95, 75, 85];
+    
+    var m = new Map([['Michael, 95], ['Bob', 75], ['Tracy', 85]]);//明明就是一二维数组
+    m.get('Michael');//装什么对象啊喂
+</code></pre>
+* 初始化Map需要一个二维数组，或直接初始化一个空Map，
+<pre><code>
+    var m = new Map(); // 空Map
+    m.set('Adam', 67); // 添加新的key-value
+    m.set('Bob', 59);
+    m.has('Adam'); // 是否存在key 'Adam': true
+    m.get('Adam'); // 67
+    m.delete('Adam'); // 删除key 'Adam'
+    m.get('Adam'); // undefined
+</code></pre>
+* 一个key 对应一个value，多个key ，后面的值覆盖前面的值    
+* Set 是一组key的集合，不存储value（键值同体？）    
+* Set 需要提供一个Array作为输入，或直接创建一个空的
+<pre><code>
+    var s1 = new Set();
+    var s2 = new Set([1, 3, 4, 5]);
+    s2.add(4);
+    s2; // Set {1, 3, 4, 5} 重复元素自动过滤
+    s2.delete(3);
+    s2; //Set{1, 4, 5}
+</code></pre>
+* Map和Set 无法使用下标，ES6引入iterable（Java的iterator），通过for...of循环遍历：(
+<pre><code>
+    var a = ['A', 'B', 'C'];
+    a.name = 'Hello';
+    for (var x in a) {
+        console.log(x); // '0', '1', '2', 'name'
+    }
+    
+    var a1 = ['A', 'B', 'C'];
+    a1.name = 'Hello';
+    for (var x of a1) {
+        console.log(x); // 'A', 'B', 'C'  for-of 只循环集合本身的元素，不访问其属性
+    }
+</code></pre>
+* forEach(),ES5.1引入。
+<pre><code>
+//Set没有索引，因此回调函数的前两个参数都是元素本身：
+    var s = new Set(['A', 'B', 'C']);
+    s.forEach(function (element, sameElement, set) {
+        console.log(element);
+    });
+//Map的回调函数参数依次为value、key和map本身：
+    var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+    m.forEach(function (value, key, map) {
+        console.log(value);
+    });
+//对某些参数不感兴趣，由于JavaScript的函数调用不要求参数必须一致，因此可以忽略它们
+    var a = ['A', 'B', 'C'];
+    a.forEach(function (element) {
+        console.log(element);
+    });
+
+</code></pre>
+
+
 
 
 
