@@ -31,7 +31,7 @@ null和undefined：null表示一个空的值，undefined表示值未定义。
 * 使用[]表示，元素之间用“，”分隔；    
 * 使用Array()函数，new Array(1,2,3);//[1,2,3]
 * JS 数组不存在outofbounds 问题，但是不推荐越界赋值    
-* <url>https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449921138898cdeb7fc2214dc08c6c67827758cd2f000</url>
+* <url>https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449921138898cdeb7fc2214dc08c6c67827758cd2f000</url>    
 数组常用方法：    
 * indexOf();//指定元素的位置
 * slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array：
@@ -39,7 +39,7 @@ null和undefined：null表示一个空的值，undefined表示值未定义。
 var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
 arr.slice(3); // 从索引3开始到结束: ['D', 'E', 'F', 'G']
-</code><pre>
+</code></pre>
 注意到slice()的起止参数包括开始索引，不包括结束索引。
 如果不给slice()传递任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个Array：
 <pre><code>
@@ -116,8 +116,6 @@ var arr = ['A', 'B', 'C', 1, 2, 3];
 arr.join('-'); // 'A-B-C-1-2-3'
 </code></pre>
 如果Array的元素不是字符串，将自动转换为字符串后再连接。
-
-
 
 对象：JS的对象是一组由键值组成的无序集合(Java对象是某一类抽象事物的一个具体实例）；
 <pre><code>
