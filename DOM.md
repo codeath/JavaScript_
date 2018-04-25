@@ -2,7 +2,7 @@
 
 文档对象模型（Document Object Model）：网页被加载时，由浏览器创建。定义了访问处理HTML文档的标准对象和标准方法    
 
- ![Image text](./caico/Pictures/Github/pic_htmltree.png)
+ ![Image text](imgSrc/pic_htmltree.png)
 
 获取元素节点：(document对象)
 * getElementById() 通过id获取一个元素节点；    
